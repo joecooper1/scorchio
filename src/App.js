@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import "./App.css";
+
+import { getWeather } from "./api";
+
+import Sky from "./Components/Background/sky";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [weather, setWeather] = useState(null);
+
+  useEffect(() => {
+    if (weather === null) {
+      setWeather(getWeather());
+    }
+  });
+
+  if (weather)
+    return (
+      <div className="App">
+        <Sky weather={weather}></Sky>
+      </div>
+    );
+  else return <h1>Loading</h1>;
 }
 
 export default App;

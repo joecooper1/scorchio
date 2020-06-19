@@ -14,4 +14,13 @@ export const Info = styled.main`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border-radius: 20px;
+`;
+
+export const Temp = styled.p`
+  font-size: 4em;
+`;
+
+export const City = styled.p`
+  font-size: 1.5em;
 `;

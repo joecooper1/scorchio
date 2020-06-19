@@ -18,11 +18,22 @@ export default function Sky(weather) {
   const bgColor = calculateColor(weather);
 
   return (
-    <canvas
-      ref={canvasRef}
-      height={height}
-      width={width}
-      style={{ backgroundColor: bgColor }}
-    ></canvas>
+    <div
+      style={{
+        height: height,
+        width: width,
+        margin: 0,
+        position: "absolute",
+        backgroundColor: "pink",
+        padding: 0,
+      }}
+    >
+      <canvas
+        ref={canvasRef}
+        height={height}
+        width={width}
+        style={{ backgroundColor: bgColor, position: "absolute" }}
+      ></canvas>
+    </div>
   );
 }

@@ -1,5 +1,8 @@
 import React, { useRef, useEffect } from "react";
-const { width, height } = window;
+import calculateColor from "../../utils/calulateColor";
+
+const width = window.innerWidth;
+const height = window.innerHeight;
 
 export default function Sky(weather) {
   const canvasRef = useRef(null);
@@ -12,5 +15,14 @@ export default function Sky(weather) {
     }
   });
 
-  return <canvas height={height} width={width}></canvas>;
+  const bgColor = calculateColor(weather);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      height={height}
+      width={width}
+      style={{ backgroundColor: bgColor }}
+    ></canvas>
+  );
 }

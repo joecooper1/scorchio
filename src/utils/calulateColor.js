@@ -1,12 +1,6 @@
-export default function calculateColor({ weather }) {
+export default function calculateColor(weather, time) {
   //Calculate cloudiness
   const clouds = weather.clouds.all;
-
-  //Get time of day
-  const now = new Date();
-  const hour = now.getHours();
-  const minute = now.getMinutes();
-  let time = Math.round(now.getTime() / 1000);
 
   const { sunrise, sunset } = weather.sys;
   const midday = sunrise + (sunset - sunrise) / 2;
@@ -47,7 +41,7 @@ export default function calculateColor({ weather }) {
   if (light < 10) light = 10;
 
   //Calculate saturation
-  const saturation = 75 - clouds * 0.7;
+  const saturation = 75 - clouds * 0.5;
 
   console.log(hue, saturation, light);
 

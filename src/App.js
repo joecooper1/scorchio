@@ -9,8 +9,13 @@ function App() {
   const [weather, setWeather] = useState(null);
 
   useEffect(() => {
+    async function callGetWeather() {
+      const newWeather = await getWeather();
+      setWeather(newWeather);
+    }
+
     if (weather === null) {
-      setWeather(getWeather());
+      callGetWeather();
     }
   });
 

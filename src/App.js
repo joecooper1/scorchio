@@ -2,11 +2,14 @@ import React, { useState, useEffect } from "react";
 
 import { getWeather } from "./api";
 
-import Sky from "./Components/Background/sky";
+import useTime from "./utils/useTime";
+
+import Rain from "./Components/Background/rain";
 import InfoBox from "./Components/Foreground/infobox";
 
 function App() {
   const [weather, setWeather] = useState(null);
+  const time = useTime();
 
   useEffect(() => {
     async function callGetWeather() {
@@ -22,7 +25,7 @@ function App() {
   if (weather)
     return (
       <div className="App">
-        <Sky weather={weather}></Sky>
+        <Rain weather={weather} time={time} />
         <InfoBox weather={weather} />
       </div>
     );

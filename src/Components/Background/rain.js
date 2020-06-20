@@ -1,6 +1,5 @@
 import React, { useRef, useEffect } from "react";
 
-import calculateColor from "../../utils/calulateColor";
 import drawRain from "../../utils/drawRain";
 
 const width = window.innerWidth;
@@ -37,14 +36,12 @@ export default function Rain({ weather, time }) {
     }
   });
 
-  const bgColor = calculateColor(weather, time);
-
   return (
     <canvas
       ref={canvasRef}
       height={height}
       width={width}
-      style={{ backgroundColor: bgColor, position: "absolute" }}
+      style={{ position: "absolute" }}
     ></canvas>
   );
 }

@@ -4,6 +4,7 @@ import { getWeather } from "./api";
 
 import useTime from "./utils/useTime";
 
+import Sky from "./Components/Background/sky";
 import Rain from "./Components/Background/rain";
 import InfoBox from "./Components/Foreground/infobox";
 
@@ -25,6 +26,7 @@ function App() {
   if (weather)
     return (
       <div className="App">
+        <Sky weather={weather} time={time} />
         <Rain weather={weather} time={time} />
         <InfoBox weather={weather} />
       </div>

@@ -14,8 +14,8 @@ export default function Rain({ weather, time }) {
       const ctx = canvas.getContext("2d");
 
       //Artificially change weather
-      //   weather.weather[0].main = "Rain";
-      //   weather.weather[0].description = "light rain";
+      // weather.weather[0].main = "Rain";
+      // weather.weather[0].description = "light rain";
 
       //If rain or drizzle
       if (
@@ -28,7 +28,9 @@ export default function Rain({ weather, time }) {
           weather.weather[0].description,
           weather.wind.speed,
           width,
-          height
+          height,
+          weather,
+          time
         );
       }
 

@@ -6,7 +6,7 @@ const width = window.innerWidth;
 const height = window.innerHeight;
 
 export default function Sky({ weather, time }) {
-  const bgColor = calculateColor(weather, time);
+  const bgColor = calculateColor(weather, time, "sky");
 
   return (
     <div

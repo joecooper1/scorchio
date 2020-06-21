@@ -1,4 +1,4 @@
-export default function calculateColor(weather, time) {
+export default function calculateColor(weather, time, type) {
   //Calculate cloudiness
   const clouds = weather.clouds.all;
 
@@ -10,7 +10,10 @@ export default function calculateColor(weather, time) {
   const transition = (10 + lat / 2) * 60;
 
   //Set hue
-  let hue = 175;
+  let hue = 0;
+  if (type === "sky") hue = 175;
+  if (type === "hills") hue = 105;
+  if (type === "rain") hue = 175;
 
   //Calculate light, should be 40 at dawn and dusk, 80 in day, 10 at night
   let light = 50;
@@ -40,10 +43,25 @@ export default function calculateColor(weather, time) {
   light -= clouds * 0.15;
   if (light < 10) light = 10;
 
+  //Make hills darker
+  if (type === "hills") {
+    light -= 20;
+    if (light < 5) light = 5;
+  }
+
+  //Make rain contrast
+  if (type === "rain") {
+    if (light < 50) {
+      light += 40;
+    } else {
+      light -= 40;
+    }
+  }
+
   //Calculate saturation
   const saturation = 75 - clouds * 0.5;
 
-  console.log(hue, saturation, light);
+  console.log(type, hue, saturation, light);
 
   return `hsl(${hue}, ${saturation}%, ${light}%)`;
 }

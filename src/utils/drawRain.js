@@ -1,4 +1,14 @@
-export default function drawRain(ctx, type, windSpeed, width, height) {
+import calculateColor from "./calulateColor";
+
+export default function drawRain(
+  ctx,
+  type,
+  windSpeed,
+  width,
+  height,
+  weather,
+  time
+) {
   //Set empty array of raindrops
   const rainDrops = [];
 
@@ -16,7 +26,7 @@ export default function drawRain(ctx, type, windSpeed, width, height) {
     case "thunderstorm with light rain":
     case "thunderstorm with heavy drizzle":
     case "light thunderstorm":
-      maxRainDrops = 50;
+      maxRainDrops = 20;
       break;
     case "moderate rain":
     case "freezing rain":
@@ -45,8 +55,10 @@ export default function drawRain(ctx, type, windSpeed, width, height) {
     });
   }
 
+  //Calculate rain color
+  const rainColor = calculateColor(weather, time, "rain");
   //Set draw style
-  ctx.strokeStyle = "rgb(100, 100, 224)";
+  ctx.strokeStyle = rainColor;
   //   ctx.strokeStyle = "red";
   ctx.lineWidth = 1;
 

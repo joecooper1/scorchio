@@ -5,14 +5,16 @@ import { getWeather } from "./api";
 import useTime from "./utils/useTime";
 
 import Sky from "./Components/Background/sky";
+import Stars from "./Components/Background/stars";
 import Clouds from "./Components/Background/clouds";
 import DistantHills from "./Components/Background/distantHills";
 import Rain from "./Components/Background/rain";
+import Snow from "./Components/Background/snow";
 import InfoBox from "./Components/Foreground/infobox";
 
 function App() {
   const [weather, setWeather] = useState(null);
-  const time = useTime();
+  let time = useTime();
 
   useEffect(() => {
     async function callGetWeather() {
@@ -27,14 +29,23 @@ function App() {
 
   if (weather) {
     //Change weather
-    // weather.clouds.all = 100;
+    // weather.clouds.all = 50;
+    //Change time
+    // time += 3600 * 10;
+    //Change windspeed
+    // weather.wind.speed = 0;
+    //Change type
+    // weather.weather[0].main = "Snow";
+    // weather.weather[0].description = "heavy snow";
 
     return (
       <div className="App">
         <Sky weather={weather} time={time} />
+        <Stars weather={weather} time={time} />
         {/* <DistantHills weather={weather} time={time} /> */}
         <Clouds weather={weather} time={time} />
         <Rain weather={weather} time={time} />
+        <Snow weather={weather} time={time} />
         <InfoBox weather={weather} />
       </div>
     );

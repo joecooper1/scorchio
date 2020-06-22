@@ -29,7 +29,7 @@ export default function drawClouds(ctx, weather, time, height, width) {
     );
     const xCoord = xPos * (width + 100) - 100;
     //Y coords must be spaced out along the top 60% of the screen
-    const yCoord = ((height * 0.7) / cloudNum) * i + 50;
+    const yCoord = ((height * 0.6) / cloudNum) * i + 50;
     //Determine size
     const cloudSize = 200 - 10 * i + clouds;
     //Determine gap between cloud and next cloud

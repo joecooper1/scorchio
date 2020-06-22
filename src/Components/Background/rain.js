@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 
 import drawRain from "../../utils/drawRain";
 
@@ -7,6 +7,7 @@ const height = window.innerHeight;
 
 export default function Rain({ weather, time }) {
   const canvasRef = useRef(null);
+  const [bgColor, setBgColor] = useState(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -38,12 +39,21 @@ export default function Rain({ weather, time }) {
     }
   });
 
+  if (
+    (weather.weather[0].main === "Fog" ||
+      weather.weather[0].main === "Mist" ||
+      weather.weather[0].main === "Haze") &&
+    bgColor === null
+  ) {
+    setBgColor("rgba(255, 255, 255, 0.5)");
+  }
+
   return (
     <canvas
       ref={canvasRef}
       height={height}
       width={width}
-      style={{ position: "absolute" }}
+      style={{ position: "absolute", backgroundColor: bgColor }}
     ></canvas>
   );
 }

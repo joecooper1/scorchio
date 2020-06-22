@@ -17,7 +17,14 @@ export default function drawHills(ctx, weather, time, height, width) {
   //Set points
   ctx.beginPath();
   ctx.moveTo(0 * w, 130 * h);
-  ctx.lineTo(100 * w, 130 * h);
+
+  //Draw waves, with jagged variation
+  for (let i = 0; i < width + 30; i += Math.random() * 20 + 10) {
+    ctx.lineTo(
+      i,
+      120 * w + Math.sin(i / 60 - 1.7) * 50 + (Math.random() * 10 - 5)
+    );
+  }
 
   //Close path
   ctx.lineTo(100 * w, 200 * h);

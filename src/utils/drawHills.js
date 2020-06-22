@@ -22,7 +22,7 @@ export default function drawHills(ctx, weather, time, height, width) {
   for (let i = 0; i < width + 30; i += Math.random() * 20 + 10) {
     ctx.lineTo(
       i,
-      120 * w + Math.sin(i / 60 - 1.7) * 50 + (Math.random() * 10 - 5)
+      120 * h + Math.sin(i / 60 - 1.7) * 50 + (Math.random() * 10 - 5)
     );
   }
 

@@ -67,8 +67,10 @@ export default function drawRain(
     ctx.clearRect(0, 0, width, height);
     for (let i = 0; i < rainDrops.length; i++) {
       const drop = rainDrops[i];
+      //Move drop
       drop.y += 20;
       drop.x += windSpeed / 5;
+      //Check not off-screen
       if (drop.y > height) {
         drop.y = Math.random() * -30;
         drop.x = Math.random() * (width + windSpeed * 4) - windSpeed * 4;

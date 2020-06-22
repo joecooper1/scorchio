@@ -29,21 +29,21 @@ function App() {
 
   if (weather) {
     //Change weather
-    // weather.clouds.all = 50;
+    weather.clouds.all = 100;
     //Change time
-    // time += 3600 * 10;
+    time += 3600 * 10;
     //Change windspeed
     // weather.wind.speed = 0;
     //Change type
-    // weather.weather[0].main = "Snow";
-    // weather.weather[0].description = "heavy snow";
+    weather.weather[0].main = "Snow";
+    weather.weather[0].description = "snow";
 
     return (
       <div className="App">
         <Sky weather={weather} time={time} />
         <Stars weather={weather} time={time} />
-        {/* <DistantHills weather={weather} time={time} /> */}
         <Clouds weather={weather} time={time} />
+        <DistantHills weather={weather} time={time} />
         <Rain weather={weather} time={time} />
         <Snow weather={weather} time={time} />
         <InfoBox weather={weather} />

@@ -1,3 +1,5 @@
+import calculateColor from "./calulateColor";
+
 export default function drawSnow(ctx, weather, time, height, width) {
   //Make array of snowflakes
   const flakes = [];
@@ -36,7 +38,7 @@ export default function drawSnow(ctx, weather, time, height, width) {
   }
 
   //Set colors
-  ctx.fillStyle = "white";
+  ctx.fillStyle = calculateColor(weather, time, "snow");
 
   //Function to calculate snow positions
   function letItSnow() {

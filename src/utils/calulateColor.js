@@ -14,6 +14,7 @@ export default function calculateColor(weather, time, type) {
   if (type === "sky") hue = 175;
   if (type === "hills") hue = 105;
   if (type === "rain") hue = 175;
+  if (type === "cloudsTop" || type === "cloudsBottom") hue = 194;
 
   //Calculate light, should be 40 at dawn and dusk, 80 in day, 10 at night
   let light = 50;
@@ -59,7 +60,28 @@ export default function calculateColor(weather, time, type) {
   }
 
   //Calculate saturation
-  const saturation = 75 - clouds * 0.5;
+  let saturation = 75 - clouds * 0.5;
+
+  //Make clouds darker at night
+  if (type === "cloudsTop") {
+    saturation = 5;
+    //If night
+    if (light === 10) light = 5;
+    else {
+      light = light + 75 - clouds * 0.6;
+      if (light < 5) light = 5;
+    }
+  }
+  if (type === "cloudsBottom") {
+    saturation = 5;
+    //If night
+    if (light === 10) light = 0;
+    else {
+      let rainLevel = weather.rain ? weather.rain["1h"] : 0;
+      light = light + 25 - clouds * 0.6 - rainLevel * 10;
+      if (light < 0) light = 0;
+    }
+  }
 
   console.log(type, hue, saturation, light);
 

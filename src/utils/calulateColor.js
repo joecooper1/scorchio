@@ -16,6 +16,7 @@ export default function calculateColor(weather, time, type) {
   if (type === "rain") hue = 175;
   if (type === "cloudsTop" || type === "cloudsBottom") hue = 194;
   if (type === "snow") hue = 175;
+  if (type === "ground") hue = 145;
 
   //Calculate light, should be 40 at dawn and dusk, 80 in day, 10 at night
   let light = 50;
@@ -49,6 +50,11 @@ export default function calculateColor(weather, time, type) {
   if (type === "hills") {
     light -= 40;
     if (light < 5) light = 5;
+  }
+
+  //Make ground darker
+  if (type === "ground") {
+    light -= 20;
   }
 
   //Make snow lighter
@@ -91,6 +97,11 @@ export default function calculateColor(weather, time, type) {
 
   //Change saturation of hills
   if (type === "hills") {
+    saturation -= 20;
+  }
+
+  //Change saturation of ground
+  if (type === "ground") {
     saturation -= 20;
   }
 

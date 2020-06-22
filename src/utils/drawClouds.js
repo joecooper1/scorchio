@@ -1,19 +1,19 @@
+import calculateColor from "./calulateColor";
+
 export default function drawClouds(ctx, weather, time, height, width) {
   let clouds = weather.clouds.all;
-
-  //Artificlly inflate clouds
-  //   clouds = 100;
 
   //Get windspeed
   const windSpeed = weather.wind.speed / 2;
 
   //Determine number of clouds
-  const cloudNum = Math.round(clouds / 10);
+  const cloudNum = Math.round(clouds / 20);
 
   //Determine how grey the clouds are
   let rainLevel = weather.rain ? weather.rain["1h"] : 0;
-  const bottomOfCloud = `hsl(194, 5%, ${100 - clouds * 0.6}%)`;
-  const topOfCloud = `hsl(194, 5%, ${150 - clouds * 0.6 - rainLevel * 10}%)`;
+
+  const bottomOfCloud = calculateColor(weather, time, "cloudsBottom");
+  const topOfCloud = calculateColor(weather, time, "cloudsTop");
 
   //Create array of x positions to choose from - ensures no cloud is exactly abov another
   const xPosition = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9];
@@ -51,7 +51,7 @@ export default function drawClouds(ctx, weather, time, height, width) {
     }
   }
 
-  function drawClouds() {
+  function drawTheClouds() {
     //Clear
     ctx.clearRect(0, 0, width, height);
     //Loop through clouds
@@ -65,7 +65,7 @@ export default function drawClouds(ctx, weather, time, height, width) {
       grd.addColorStop(1, topOfCloud);
       ctx.fillStyle = grd;
       //Stroke
-      ctx.strokeStyle = "red";
+      ctx.strokeStyle = grd;
       ctx.lineWidth = 1;
       //Draw cloud
       ctx.beginPath();
@@ -101,6 +101,7 @@ export default function drawClouds(ctx, weather, time, height, width) {
       );
       ctx.lineTo(x, y);
       ctx.fill();
+      ctx.stroke();
 
       //Draw lines to show angles
       if (true === false) {
@@ -158,11 +159,12 @@ export default function drawClouds(ctx, weather, time, height, width) {
       );
       ctx.lineTo(x2, y);
       ctx.fill();
+      ctx.stroke();
     }
   }
 
   setInterval(() => {
     moveClouds();
-    drawClouds();
+    drawTheClouds();
   }, 30);
 }

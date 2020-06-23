@@ -4,14 +4,13 @@ import { getWeather } from "./api";
 
 import useTime from "./utils/useTime";
 
-import Sky from "./Components/Background/sky";
-import Stars from "./Components/Background/stars";
-import Clouds from "./Components/Background/clouds";
-import DistantHills from "./Components/Background/distantHills";
-import Ground from "./Components/Background/ground";
-import Rain from "./Components/Background/rain";
-import Snow from "./Components/Background/snow";
-import InfoBox from "./Components/Foreground/infobox";
+import Screen from "./Components/screen";
+import OptionsScreen from "./Components/Options/optionsScreen";
+
+import { WholeScreen } from "./styles/screen.styles";
+
+const width = window.innerWidth;
+const height = window.innerHeight;
 
 function App() {
   const [weather, setWeather] = useState(null);
@@ -28,27 +27,43 @@ function App() {
     }
   });
 
+  //Functions to change the weather
+  function changeWeather(newValues) {
+    //Make a shallow copy of the existing weather
+    const newWeather = { ...weather };
+    //Loop through each of the new values and change the corresponding property
+    newWeather.weather[0].main = newValues["weather[0].main"];
+    newWeather.weather[0].description = newValues["weather[0].description"];
+    newWeather.wind.speed = newValues["wind.speed"];
+    newWeather.clouds.all = newValues["clouds.all"];
+    console.log(newWeather);
+    //Set the weather
+    setWeather(newWeather);
+  }
+
   if (weather) {
     //Change weather
     // weather.clouds.all = 100;
     //Change time
     // time += 3600 * 10;
     //Change windspeed
-    // weather.wind.speed = 0;
+    // weather.wind.speed = 50;
     //Change type
-    // weather.weather[0].main = "Mist";
-    // weather.weather[0].description = "snow";
+    // weather.weather[0].main = "Snow";
+    // weather.weather[0].description = "light snow";
 
     return (
       <div className="App">
-        <Sky weather={weather} time={time} />
-        <Stars weather={weather} time={time} />
-        <Clouds weather={weather} time={time} />
-        <DistantHills weather={weather} time={time} />
-        <Ground weather={weather} time={time} />
-        <Rain weather={weather} time={time} />
-        <Snow weather={weather} time={time} />
-        <InfoBox weather={weather} />
+        <WholeScreen>
+          <Screen weather={weather} time={time} width={width} height={height} />
+          <OptionsScreen
+            weather={weather}
+            time={time}
+            width={width}
+            height={height}
+            changeWeather={changeWeather}
+          />
+        </WholeScreen>
       </div>
     );
   } else return <h1>Loading</h1>;

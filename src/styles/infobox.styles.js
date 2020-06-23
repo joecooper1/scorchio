@@ -1,13 +1,10 @@
-import styled, { css } from "styled-components";
-
-const width = window.innerWidth;
-const height = window.innerHeight;
+import styled from "styled-components";
 
 export const Info = styled.main`
-  margin-top: ${(props) => `${height * 0.1}px`};
-  margin-left: ${(props) => `${width * 0.1}px`};
-  width: ${(props) => `${width * 0.8}px`};
-  height: ${(props) => `${height * 0.8}px`};
+  margin-top: ${(props) => `${props.height * 0.1}px`};
+  margin-left: ${(props) => `${props.width * 0.1}px`};
+  width: ${(props) => `${props.width * 0.8}px`};
+  height: ${(props) => `${props.height * 0.8}px`};
   background-color: rgba(255, 255, 255, 0.2);
   position: absolute;
   display: flex;

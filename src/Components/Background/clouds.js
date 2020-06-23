@@ -1,11 +1,8 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 
 import drawClouds from "../../utils/drawClouds";
 
-const width = window.innerWidth;
-const height = window.innerHeight;
-
-export default function Clouds({ weather, time }) {
+export default function Clouds({ weather, time, width, height }) {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -18,6 +15,8 @@ export default function Clouds({ weather, time }) {
         drawClouds(ctx, weather, time, height, width);
       }
     }
+
+    // return () => clearInterval(id);
   });
 
   return (

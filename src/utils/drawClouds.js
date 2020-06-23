@@ -33,7 +33,7 @@ export default function drawClouds(ctx, weather, time, height, width) {
     //Determine size
     const cloudSize = 200 - 10 * i + clouds;
     //Determine gap between cloud and next cloud
-    const gap = Math.random() * (width / 3) + width * 0.6;
+    const gap = Math.random() * (width / 2) + width * 0.3;
     cloudArray.push({
       coords: { x: xCoord, y: yCoord },
       size: cloudSize,
@@ -122,8 +122,9 @@ export default function drawClouds(ctx, weather, time, height, width) {
 
       //Move xCoord for the second cloud
       let x2 = x;
-      if (x < width / 2) x2 += width / 2 + cloud.gap;
-      else x2 -= width / 2 + cloud.gap;
+      // if (x < width / 2) x2 += width / 2 + cloud.gap;
+      // else
+      x2 -= width / 2 + cloud.gap;
 
       //Draw second cloud
       ctx.beginPath();
@@ -163,7 +164,9 @@ export default function drawClouds(ctx, weather, time, height, width) {
     }
   }
 
-  setInterval(() => {
+  clearInterval(id);
+
+  const id = setInterval(() => {
     moveClouds();
     drawTheClouds();
   }, 30);

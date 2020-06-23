@@ -2,10 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 
 import drawRain from "../../utils/drawRain";
 
-const width = window.innerWidth;
-const height = window.innerHeight;
-
-export default function Rain({ weather, time }) {
+export default function Rain({ weather, time, width, height }) {
   const canvasRef = useRef(null);
   const [bgColor, setBgColor] = useState(null);
 

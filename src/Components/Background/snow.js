@@ -2,10 +2,7 @@ import React, { useRef, useEffect } from "react";
 
 import drawSnow from "../../utils/drawSnow";
 
-const width = window.innerWidth;
-const height = window.innerHeight;
-
-export default function Snow({ weather, time }) {
+export default function Snow({ weather, time, width, height }) {
   const canvasRef = useRef(null);
 
   useEffect(() => {

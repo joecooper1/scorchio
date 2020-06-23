@@ -2,10 +2,7 @@ import React, { useRef, useEffect } from "react";
 
 import drawStars from "../../utils/drawStars";
 
-const width = window.innerWidth;
-const height = window.innerHeight;
-
-export default function Stars({ weather, time }) {
+export default function Stars({ weather, time, width, height }) {
   const canvasRef = useRef(null);
 
   useEffect(() => {

@@ -2,9 +2,6 @@ import React from "react";
 
 import calculateColor from "../../utils/calulateColor";
 
-const width = window.innerWidth;
-const height = window.innerHeight;
-
 export default function Sky({ weather, time }) {
   const bgColor = calculateColor(weather, time, "sky");
 
@@ -13,8 +10,8 @@ export default function Sky({ weather, time }) {
       style={{
         backgroundColor: bgColor,
         position: "absolute",
-        height: height,
-        width: width,
+        height: "inherit",
+        width: "inherit",
       }}
     ></div>
   );

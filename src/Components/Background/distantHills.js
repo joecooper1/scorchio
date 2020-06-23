@@ -2,10 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 
 import drawHills from "../../utils/drawHills";
 
-const width = window.innerWidth;
-const height = window.innerHeight;
-
-export default function DistantHills({ weather, time }) {
+export default function DistantHills({ weather, time, width, height }) {
   const canvasRef = useRef(null);
   const [bgColor, setBgColor] = useState(null);
 

@@ -11,28 +11,33 @@ export default function Rain({ weather, time, width, height }) {
     if (canvas) {
       const ctx = canvas.getContext("2d");
 
-      //Artificially change weather
-      // weather.weather[0].main = "Rain";
-      // weather.weather[0].description = "light rain";
+      const makeItRain = drawRain(
+        ctx,
+        weather.weather[0].description,
+        weather.wind.speed,
+        width,
+        height,
+        weather,
+        time
+      );
 
-      //If rain or drizzle
+      let id = null;
+
+      //If rain or drizzle or storm
       if (
         weather.weather[0].main === "Rain" ||
         weather.weather[0].main === "Drizzle" ||
         weather.weather[0].main === "Thunderstorm"
       ) {
-        drawRain(
-          ctx,
-          weather.weather[0].description,
-          weather.wind.speed,
-          width,
-          height,
-          weather,
-          time
-        );
-      }
+        id = setInterval(() => {
+          makeItRain();
+        }, 30);
+      } else ctx.clearRect(0, 0, width, height);
 
-      //Draw things from here
+      //Clear up
+      return () => {
+        if (id) clearInterval(id);
+      };
     }
   });
 

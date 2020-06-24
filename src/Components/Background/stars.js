@@ -10,12 +10,26 @@ export default function Stars({ weather, time, width, height }) {
     if (canvas) {
       const ctx = canvas.getContext("2d");
 
-      //Draw things here
-
       const { sunrise, sunset } = weather.sys;
+
+      const drawTheStars = drawStars(ctx, weather, time, height, width);
+
+      let count = 0;
+
+      let id = null;
+
       //And if at night
-      if (time < sunrise || time > sunset)
-        drawStars(ctx, weather, time, height, width);
+      if (time < sunrise || time > sunset) {
+        id = setInterval(() => {
+          count += 0.005;
+          drawTheStars(count);
+        }, 30);
+      } else ctx.clearRect(0, 0, width, height);
+
+      //Clear up
+      return () => {
+        if (id) clearInterval(id);
+      };
     }
   });
 

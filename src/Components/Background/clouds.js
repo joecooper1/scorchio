@@ -10,10 +10,23 @@ export default function Clouds({ weather, time, width, height }) {
     if (canvas) {
       const ctx = canvas.getContext("2d");
 
+      const { moveClouds, drawTheClouds } = drawClouds(
+        ctx,
+        weather,
+        time,
+        height,
+        width
+      );
+
+      const id = setInterval(() => {
+        moveClouds();
+        drawTheClouds();
+      }, 30);
       //Draw things here
-      if (weather.clouds.all > 0) {
-        drawClouds(ctx, weather, time, height, width);
-      }
+      // if (weather.clouds.all > 0) {
+      //   const id = drawClouds(ctx, weather, time, height, width);
+      // }
+      return () => clearInterval(id);
     }
 
     // return () => clearInterval(id);

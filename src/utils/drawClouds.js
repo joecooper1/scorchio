@@ -33,7 +33,8 @@ export default function drawClouds(ctx, weather, time, height, width) {
     //Determine size
     const cloudSize = 200 - 10 * i + clouds;
     //Determine gap between cloud and next cloud
-    const gap = Math.random() * (width / 2) + width * 0.3;
+    // const gap = Math.random() * (width / 2) + width * 0.5;
+    const gap = width * 0.6;
     cloudArray.push({
       coords: { x: xCoord, y: yCoord },
       size: cloudSize,
@@ -164,10 +165,5 @@ export default function drawClouds(ctx, weather, time, height, width) {
     }
   }
 
-  clearInterval(id);
-
-  const id = setInterval(() => {
-    moveClouds();
-    drawTheClouds();
-  }, 30);
+  return { moveClouds, drawTheClouds };
 }

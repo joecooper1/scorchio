@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import { WeatherOptionBox, NumberInput } from "../../styles/options.styles";
+
 export default function WeatherOptions(props) {
   const [newValues, setNewValues] = useState({
     "weather[0].main": props.weather.weather[0].main,
@@ -8,14 +10,18 @@ export default function WeatherOptions(props) {
     "clouds.all": props.weather.clouds.all,
   });
 
-  console.log(newValues);
-
   //All options for weather type
-  const weatherTypes = ["Rain", "Thunderstorm", "Snow", "Mist"];
+  const weatherTypes = ["Rain", "Thunderstorm", "Snow", "Mist", "None"];
 
   //All options for weather descriptions
   const weatherDescriptions = {
-    Rain: ["drizzle", "moderate rain", "heavy rain", "extreme rain"],
+    Rain: [
+      "drizzle",
+      "light rain",
+      "moderate rain",
+      "very heavy rain",
+      "extreme rain",
+    ],
     Thunderstorm: ["light thunderstorm", "thunderstorm", "heavy thunderstorm"],
     Snow: ["light snow", "snow", "heavy snow"],
     Mist: [],
@@ -23,6 +29,7 @@ export default function WeatherOptions(props) {
     Clear: [],
     Fog: [],
     Drizzle: [],
+    None: [],
   };
 
   //Function to change main weather
@@ -56,7 +63,7 @@ export default function WeatherOptions(props) {
     //Check range
     let wind = event.target.value;
     if (wind < 0) wind = 0;
-    if (wind > 50) wind = 50;
+    if (wind > 20) wind = 20;
     //Change the values given
     newNewValues["wind.speed"] = wind;
     //Set newValues
@@ -77,7 +84,7 @@ export default function WeatherOptions(props) {
   }
 
   return (
-    <nav style={{ backgroundColor: "red" }}>
+    <WeatherOptionBox>
       <label>
         Weather Type:{" "}
         <select onChange={changeMain}>
@@ -100,11 +107,19 @@ export default function WeatherOptions(props) {
       </label>
       <label>
         Cloud cover (0-100):{" "}
-        <input value={newValues["clouds.all"]} onChange={changeClouds}></input>
+        <NumberInput
+          type="number"
+          value={newValues["clouds.all"]}
+          onChange={changeClouds}
+        ></NumberInput>
       </label>
       <label>
-        Wind speed (0-50):{" "}
-        <input onChange={changeWind} value={newValues["wind.speed"]}></input>
+        Wind speed (0-20):{" "}
+        <NumberInput
+          type="number"
+          onChange={changeWind}
+          value={newValues["wind.speed"]}
+        ></NumberInput>
       </label>
       <button
         onClick={() => {
@@ -113,6 +128,6 @@ export default function WeatherOptions(props) {
       >
         Go
       </button>
-    </nav>
+    </WeatherOptionBox>
   );
 }

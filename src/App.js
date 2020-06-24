@@ -34,18 +34,30 @@ function App() {
     //Loop through each of the new values and change the corresponding property
     newWeather.weather[0].main = newValues["weather[0].main"];
     newWeather.weather[0].description = newValues["weather[0].description"];
-    newWeather.wind.speed = newValues["wind.speed"];
-    newWeather.clouds.all = newValues["clouds.all"];
+    newWeather.wind.speed = parseInt(newValues["wind.speed"]);
+    newWeather.clouds.all = parseInt(newValues["clouds.all"]);
     console.log(newWeather);
     //Set the weather
     setWeather(newWeather);
   }
 
+  //Functions to change location
+  async function changeCity(city) {
+    const newWeather = await getWeather(city);
+    setWeather(newWeather);
+  }
+
+  async function changeCoords(lat, lon) {
+    const newWeather = await getWeather(null, null, lat, lon);
+    setWeather(newWeather);
+  }
+
+  //Return
   if (weather) {
     //Change weather
     // weather.clouds.all = 100;
     //Change time
-    // time += 3600 * 10;
+    // time += 3600 * 15;
     //Change windspeed
     // weather.wind.speed = 50;
     //Change type
@@ -62,6 +74,8 @@ function App() {
             width={width}
             height={height}
             changeWeather={changeWeather}
+            changeCity={changeCity}
+            changeCoords={changeCoords}
           />
         </WholeScreen>
       </div>

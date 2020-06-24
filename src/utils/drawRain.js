@@ -26,7 +26,7 @@ export default function drawRain(
     case "thunderstorm with light rain":
     case "thunderstorm with heavy drizzle":
     case "light thunderstorm":
-      maxRainDrops = 20;
+      maxRainDrops = 30;
       break;
     case "moderate rain":
     case "freezing rain":
@@ -83,7 +83,5 @@ export default function drawRain(
     }
   };
 
-  setInterval(() => {
-    makeItRain();
-  }, 30);
+  return makeItRain;
 }

@@ -26,9 +26,9 @@ export default function drawStars(ctx, weather, time, height, width) {
       //Fix brightness
       if (star.brightness < 0) star.brightness = 0;
       //Set draw colors
-      ctx.fillStyle = `hsl(56, 89%, ${
-        1 + Math.abs(Math.sin(count + star.progression) * star.brightness) * 10
-      }%)`;
+      ctx.fillStyle = `hsla(56, 89%, ${star.brightness * 10}%, ${
+        Math.abs(Math.sin(count + star.progression) * star.brightness) / 10
+      })`;
       ctx.shadowColor = "white";
       ctx.shadowBlur = Math.abs(
         Math.sin(count + star.progression) * star.brightness
@@ -46,12 +46,5 @@ export default function drawStars(ctx, weather, time, height, width) {
     }
   }
 
-  //Set count
-  let count = 0;
-
-  setInterval(() => {
-    //Change this to speed up/slow down flickering effect
-    count += 0.005;
-    drawTheStars(count);
-  }, 30);
+  return drawTheStars;
 }

@@ -66,7 +66,5 @@ export default function drawSnow(ctx, weather, time, height, width) {
     }
   }
 
-  setInterval(() => {
-    letItSnow();
-  }, 30);
+  return letItSnow;
 }

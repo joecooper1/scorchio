@@ -16,6 +16,7 @@ export default function Ground({ weather, time, width, height }) {
     }
   });
 
+  //Add or remove mist
   if (
     (weather.weather[0].main === "Fog" ||
       weather.weather[0].main === "Mist" ||
@@ -23,6 +24,8 @@ export default function Ground({ weather, time, width, height }) {
     bgColor === null
   ) {
     setBgColor("rgba(255, 255, 255, 0.5)");
+  } else if (bgColor === "rgba(255, 255, 255, 0.5") {
+    setBgColor("rgba(0, 0, 0, 0)");
   }
 
   return (

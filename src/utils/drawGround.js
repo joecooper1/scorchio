@@ -1,6 +1,9 @@
 import calculateColor from "./calulateColor";
 
 export default function drawGround(ctx, weather, time, height, width) {
+  //Clear canvas
+  ctx.clearRect(0, 0, width, height);
+
   //Calculate ground color
   const bgColor = calculateColor(weather, time, "ground");
 

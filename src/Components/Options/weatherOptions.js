@@ -4,10 +4,10 @@ import { WeatherOptionBox, NumberInput } from "../../styles/options.styles";
 
 export default function WeatherOptions(props) {
   const [newValues, setNewValues] = useState({
-    "weather[0].main": props.weather.weather[0].main,
-    "weather[0].description": props.weather.weather[0].description,
-    "wind.speed": props.weather.wind.speed,
-    "clouds.all": props.weather.clouds.all,
+    main: props.weather.weather[0].main,
+    description: props.weather.weather[0].description,
+    windSpeed: props.weather.wind.speed,
+    clouds: props.weather.clouds.all
   });
 
   //All options for weather type
@@ -37,12 +37,12 @@ export default function WeatherOptions(props) {
     //Create a shallow copy
     const newNewValues = { ...newValues };
     //If main weather type has changed, also change the description
-    if (event.target.value !== newNewValues["weather[0].main"]) {
-      newNewValues["weather[0].description"] =
+    if (event.target.value !== newNewValues.main) {
+      newNewValues.description =
         weatherDescriptions[event.target.value][0];
     }
     //Change the values given
-    newNewValues["weather[0].main"] = event.target.value;
+    newNewValues.main = event.target.value;
     //Set newValues
     setNewValues(newNewValues);
   }
@@ -52,7 +52,7 @@ export default function WeatherOptions(props) {
     //Create a shallow copy
     const newNewValues = { ...newValues };
     //Change the values given
-    newNewValues["weather[0].description"] = event.target.value;
+    newNewValues.description = event.target.value;
     //Set newValues
     setNewValues(newNewValues);
   }
@@ -65,7 +65,7 @@ export default function WeatherOptions(props) {
     if (wind < 0) wind = 0;
     if (wind > 20) wind = 20;
     //Change the values given
-    newNewValues["wind.speed"] = wind;
+    newNewValues.windSpeed = wind;
     //Set newValues
     setNewValues(newNewValues);
   }
@@ -78,7 +78,7 @@ export default function WeatherOptions(props) {
     if (clouds < 0) clouds = 0;
     if (clouds > 100) clouds = 100;
     //Change the values given
-    newNewValues["clouds.all"] = clouds;
+    newNewValues.clouds = clouds;
     //Set newValues
     setNewValues(newNewValues);
   }
@@ -98,18 +98,16 @@ export default function WeatherOptions(props) {
         Intensity:{" "}
         <select onChange={changeIntensity}>
           <option hidden></option>
-          {weatherDescriptions[newValues["weather[0].main"]].map(
-            (description) => {
-              return <option key={description}>{description}</option>;
-            }
-          )}
+          {weatherDescriptions[newValues.main].map((description) => {
+            return <option key={description}>{description}</option>;
+          })}
         </select>
       </label>
       <label>
         Cloud cover (0-100):{" "}
         <NumberInput
           type="number"
-          value={newValues["clouds.all"]}
+          value={newValues.clouds}
           onChange={changeClouds}
         ></NumberInput>
       </label>
@@ -118,7 +116,7 @@ export default function WeatherOptions(props) {
         <NumberInput
           type="number"
           onChange={changeWind}
-          value={newValues["wind.speed"]}
+          value={newValues.windSpeed}
         ></NumberInput>
       </label>
       <button

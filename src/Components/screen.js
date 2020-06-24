@@ -12,8 +12,9 @@ import InfoBox from "./Foreground/infobox";
 import { Display } from "../styles/screen.styles";
 
 export default function Screen(props) {
+  //Limit size of screen if on a desktop
   const newProps = { ...props };
-  if (newProps.width >= 400) {
+  if (newProps.width >= 700) {
     newProps.width = 360;
     newProps.height = 640;
   }

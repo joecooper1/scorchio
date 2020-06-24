@@ -22,24 +22,31 @@ export default function calculateColor(weather, time, type) {
   let light = 50;
   if (time < sunrise - transition) {
     //If before pre-dawn
+    console.log("night");
     light = 10;
   } else if (time < sunrise) {
     //If pre-dawn
+    console.log("pre-dawn");
     light = 10 + ((transition - (sunrise - time)) / transition) * 30;
   } else if (time < sunrise + transition && time <= midday) {
     //If dawn, and before midday (this is to stop dawn extending longer than the day in high lats)
+    console.log("dawn");
     light = 40 + ((transition - (time - sunrise)) / transition) * 40;
   } else if (time < sunset - transition) {
     //If daytime
+    console.log("daytime");
     light = 80;
   } else if (time < sunset) {
     //If dusk
+    console.log("dusk");
     light = 80 - ((transition - (sunset - time)) / transition) * 40;
   } else if (time < sunset + transition) {
     //If post-dusk
+    console.log("post-dusk");
     light = 40 - ((transition - (time - sunset)) / transition) * 30;
   } else {
     //If night
+    console.log("night");
     light = 10;
   }
   //Factor in clouds

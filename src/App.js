@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { getWeather } from "./api";
+import { getWeather, getHourlyForecast } from "./api";
 
 import useTime from "./utils/useTime";
 
@@ -14,11 +14,14 @@ const height = window.innerHeight;
 
 function App() {
   const [weather, setWeather] = useState(null);
-  let time = useTime();
+  const [customTime, setCustomTime] = useState(null);
+  let { time, hour, minute, midnight } = useTime(customTime);
 
   useEffect(() => {
     async function callGetWeather() {
       const newWeather = await getWeather();
+      //Extract lat and lon, call for hourly forecast
+      const { lat, lon } = newWeather.sys;
       setWeather(newWeather);
     }
 
@@ -32,10 +35,10 @@ function App() {
     //Make a shallow copy of the existing weather
     const newWeather = { ...weather };
     //Loop through each of the new values and change the corresponding property
-    newWeather.weather[0].main = newValues["weather[0].main"];
-    newWeather.weather[0].description = newValues["weather[0].description"];
-    newWeather.wind.speed = parseInt(newValues["wind.speed"]);
-    newWeather.clouds.all = parseInt(newValues["clouds.all"]);
+    newWeather.weather[0].main = newValues.main;
+    newWeather.weather[0].description = newValues.description;
+    newWeather.wind.speed = parseInt(newValues.windSpeed);
+    newWeather.clouds.all = parseInt(newValues.clouds);
     console.log(newWeather);
     //Set the weather
     setWeather(newWeather);
@@ -50,6 +53,12 @@ function App() {
   async function changeCoords(lat, lon) {
     const newWeather = await getWeather(null, null, lat, lon);
     setWeather(newWeather);
+  }
+
+  function changeCustomTime(hours, minutes) {
+    console.log(hours, minutes);
+    const newCustomTime = midnight + hours * 3600 + minutes * 60;
+    setCustomTime(newCustomTime);
   }
 
   //Return
@@ -67,15 +76,25 @@ function App() {
     return (
       <div className="App">
         <WholeScreen>
-          <Screen weather={weather} time={time} width={width} height={height} />
+          <Screen
+            weather={weather}
+            time={time}
+            width={width}
+            height={height}
+            hour={hour}
+            minute={minute}
+          />
           <OptionsScreen
             weather={weather}
             time={time}
+            hour={hour}
+            minute={minute}
             width={width}
             height={height}
             changeWeather={changeWeather}
             changeCity={changeCity}
             changeCoords={changeCoords}
+            changeCustomTime={changeCustomTime}
           />
         </WholeScreen>
       </div>

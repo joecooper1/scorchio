@@ -16,37 +16,37 @@ export default function calculateColor(weather, time, type) {
   if (type === "rain") hue = 175;
   if (type === "cloudsTop" || type === "cloudsBottom") hue = 194;
   if (type === "snow") hue = 175;
-  if (type === "ground") hue = 145;
+  if (type === "ground") hue = 135;
 
   //Calculate light, should be 40 at dawn and dusk, 80 in day, 10 at night
   let light = 50;
   if (time < sunrise - transition) {
     //If before pre-dawn
-    console.log("night");
+    // console.log("night");
     light = 10;
   } else if (time < sunrise) {
     //If pre-dawn
-    console.log("pre-dawn");
+    // console.log("pre-dawn");
     light = 10 + ((transition - (sunrise - time)) / transition) * 30;
   } else if (time < sunrise + transition && time <= midday) {
     //If dawn, and before midday (this is to stop dawn extending longer than the day in high lats)
-    console.log("dawn");
-    light = 40 + ((transition - (time - sunrise)) / transition) * 40;
+    // console.log("dawn");
+    light = 40 + (40 - ((transition - (time - sunrise)) / transition) * 40);
   } else if (time < sunset - transition) {
     //If daytime
-    console.log("daytime");
+    // console.log("daytime");
     light = 80;
   } else if (time < sunset) {
     //If dusk
-    console.log("dusk");
+    // console.log("dusk");
     light = 80 - ((transition - (sunset - time)) / transition) * 40;
   } else if (time < sunset + transition) {
     //If post-dusk
-    console.log("post-dusk");
-    light = 40 - ((transition - (time - sunset)) / transition) * 30;
+    // console.log("post-dusk");
+    light = 40 - (30 - ((transition - (time - sunset)) / transition) * 30);
   } else {
     //If night
-    console.log("night");
+    // console.log("night");
     light = 10;
   }
   //Factor in clouds
@@ -61,7 +61,7 @@ export default function calculateColor(weather, time, type) {
 
   //Make ground darker
   if (type === "ground") {
-    light -= 20;
+    light -= 50;
   }
 
   //Make snow lighter
@@ -76,6 +76,12 @@ export default function calculateColor(weather, time, type) {
     } else {
       light -= 40;
     }
+  }
+
+  //Change text color
+  if (type === "text") {
+    if (light < 30) light = 100;
+    else light = 0;
   }
 
   //Calculate saturation

@@ -12,6 +12,7 @@ export const Info = styled.main`
   align-items: center;
   justify-content: flex-start;
   border-radius: 20px;
+  color: ${(props) => `${props.color}`};
 `;
 
 export const Temp = styled.p`
@@ -22,7 +23,12 @@ export const Temp = styled.p`
 
 export const City = styled.p`
   font-size: 1em;
-  margin-top: 0;
+  margin-top: 20px;
+  margin-bottom: 5px;
 `;
 
 export const Image = styled.img``;
+
+export const Time = styled.p`
+  margin-top: 0;
+`;

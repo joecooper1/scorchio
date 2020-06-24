@@ -4,28 +4,40 @@ import { OptionsBox } from "../../styles/options.styles";
 
 import WeatherOptions from "./weatherOptions";
 import LocationOptions from "./locationOptions";
+import TimeOptions from "./timeOptions";
 
 export default function OptionsScreen(props) {
   //Extract variables
   const {
     weather,
     time,
+    hour,
+    minute,
     width,
     height,
     changeWeather,
     changeCity,
     changeCoords,
+    changeCustomTime,
   } = props;
 
   return (
     <OptionsBox width={width} height={height}>
-      <h2>Options</h2>
+      <h1>Scorchio</h1>
+      <p>A prototype design for a 'live' weather app.</p>
+      <h3>Options</h3>
       <p>Input your location, or change the weather and time manually.</p>
       <LocationOptions
         weather={weather}
         changeCity={changeCity}
         changeCoords={changeCoords}
       />
+      <TimeOptions
+        hour={hour}
+        minute={minute}
+        time={time}
+        changeCustomTime={changeCustomTime}
+      ></TimeOptions>
       <WeatherOptions weather={weather} changeWeather={changeWeather} />
     </OptionsBox>
   );

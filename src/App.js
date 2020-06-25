@@ -15,7 +15,8 @@ const height = window.innerHeight;
 function App() {
   const [weather, setWeather] = useState(null);
   const [customTime, setCustomTime] = useState(null);
-  let { time, hour, minute, midnight } = useTime(customTime);
+  const [timezone, setTimezone] = useState(null);
+  let { time, hour, minute, midnight } = useTime(customTime, weather);
 
   useEffect(() => {
     async function callGetWeather() {
@@ -72,7 +73,7 @@ function App() {
     //Change type
     // weather.weather[0].main = "Snow";
     // weather.weather[0].description = "light snow";
-
+    console.log(weather);
     return (
       <div className="App">
         <WholeScreen>

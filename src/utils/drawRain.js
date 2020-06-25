@@ -45,6 +45,9 @@ export default function drawRain(
     case "extreme rain":
       maxRainDrops = 400;
       break;
+    default:
+      maxRainDrops = 10;
+      break;
   }
 
   //Fill array with raindrops
@@ -59,12 +62,13 @@ export default function drawRain(
   const rainColor = calculateColor(weather, time, "rain");
   //Set draw style
   ctx.strokeStyle = rainColor;
-  //   ctx.strokeStyle = "red";
   ctx.lineWidth = 1;
 
   //Function to calculate the rain positions
   const makeItRain = () => {
+    //Clear canvas
     ctx.clearRect(0, 0, width, height);
+    //Loop through raindrops
     for (let i = 0; i < rainDrops.length; i++) {
       const drop = rainDrops[i];
       //Move drop

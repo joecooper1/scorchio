@@ -22,6 +22,9 @@ export default function drawSnow(ctx, weather, time, height, width) {
     case "heavy shower snow":
       maxFlakes = 80;
       break;
+    default:
+      maxFlakes = 10;
+      break;
   }
 
   //Fill array with flakes

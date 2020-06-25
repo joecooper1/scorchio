@@ -54,10 +54,10 @@ export default function calculateColor(weather, time, type) {
   }
 
   //Factor in clouds
-  light -= clouds * 0.18;
+  light -= clouds * 0.15;
   if (light < 10) light = 10;
 
-  if (type === "sky") saturation -= clouds * 0.2;
+  if (type === "sky") saturation -= clouds * 0.05;
 
   //Make hills darker
   if (type === "hills") {

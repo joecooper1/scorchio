@@ -17,7 +17,7 @@ export const getWeather = (city = "Manchester", country, lat, lon) => {
       return result.data;
     })
     .catch((err) => {
-      return "error";
+      return null;
     });
 };
 

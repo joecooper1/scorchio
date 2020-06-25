@@ -8,7 +8,6 @@ import {
 
 export default function LocationOptions(props) {
   const [newCity, setNewCity] = useState(props.weather.name);
-  const [newCountry, setNewCountry] = useState(props.weather.sys.country);
   const [newLatitude, setNewLatitude] = useState(props.weather.coord.lat);
   const [newLongitude, setNewLongitude] = useState(props.weather.coord.lon);
 

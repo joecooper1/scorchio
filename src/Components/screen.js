@@ -3,6 +3,7 @@ import React from "react";
 import Sky from "./Background/sky";
 import Stars from "./Background/stars";
 import Clouds from "./Background/clouds";
+import Lightning from "./Background/lightning";
 import DistantHills from "./Background/distantHills";
 import Ground from "./Background/ground";
 import Rain from "./Background/rain";
@@ -26,6 +27,7 @@ export default function Screen(props) {
       <Clouds {...newProps} />
       <DistantHills {...newProps} />
       <Ground {...newProps} />
+      <Lightning {...newProps} />
       <Rain {...newProps} />
       <Snow {...newProps} />
       <InfoBox {...newProps} />

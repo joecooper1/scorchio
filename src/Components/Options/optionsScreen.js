@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { OptionsBox } from "../../styles/options.styles";
 
@@ -26,18 +26,18 @@ export default function OptionsScreen(props) {
       <h1>Scorchio</h1>
       <p>A prototype design for a 'live' weather app.</p>
       <h3>Options</h3>
-      <p>Input your location, or change the weather and time manually.</p>
+      <p>Input your location, or change the weather manually.</p>
       <LocationOptions
         weather={weather}
         changeCity={changeCity}
         changeCoords={changeCoords}
       />
-      <TimeOptions
+      {/* <TimeOptions
         hour={hour}
         minute={minute}
         time={time}
         changeCustomTime={changeCustomTime}
-      ></TimeOptions>
+      ></TimeOptions> */}
       <WeatherOptions weather={weather} changeWeather={changeWeather} />
     </OptionsBox>
   );

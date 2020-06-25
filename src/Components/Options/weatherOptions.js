@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { WeatherOptionBox, NumberInput } from "../../styles/options.styles";
 
@@ -7,8 +7,17 @@ export default function WeatherOptions(props) {
     main: props.weather.weather[0].main,
     description: props.weather.weather[0].description,
     windSpeed: props.weather.wind.speed,
-    clouds: props.weather.clouds.all
+    clouds: props.weather.clouds.all,
   });
+
+  useEffect(() => {
+    setNewValues({
+      main: props.weather.weather[0].main,
+      description: props.weather.weather[0].description,
+      windSpeed: props.weather.wind.speed,
+      clouds: props.weather.clouds.all,
+    });
+  }, [props]);
 
   //All options for weather type
   const weatherTypes = ["Rain", "Thunderstorm", "Snow", "Mist", "None"];
@@ -38,8 +47,7 @@ export default function WeatherOptions(props) {
     const newNewValues = { ...newValues };
     //If main weather type has changed, also change the description
     if (event.target.value !== newNewValues.main) {
-      newNewValues.description =
-        weatherDescriptions[event.target.value][0];
+      newNewValues.description = weatherDescriptions[event.target.value][0];
     }
     //Change the values given
     newNewValues.main = event.target.value;

@@ -1,5 +1,3 @@
-import calculateColor from "./calulateColor";
-
 export default function drawStars(ctx, weather, time, height, width) {
   //Create array of stars
   const stars = [];

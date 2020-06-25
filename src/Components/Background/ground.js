@@ -18,15 +18,16 @@ export default function Ground({ weather, time, width, height }) {
 
   //Add or remove mist
   if (
-    (weather.weather[0].main === "Fog" ||
-      weather.weather[0].main === "Mist" ||
-      weather.weather[0].main === "Haze") &&
-    bgColor === null
+    weather.weather[0].main === "Fog" ||
+    weather.weather[0].main === "Mist" ||
+    weather.weather[0].main === "Haze"
   ) {
-    setBgColor("rgba(255, 255, 255, 0.5)");
-  } else if (bgColor === "rgba(255, 255, 255, 0.5") {
-    setBgColor("rgba(0, 0, 0, 0)");
+    if (bgColor === null) setBgColor("rgba(255, 255, 255, 0.3)");
+  } else if (bgColor === "rgba(255, 255, 255, 0.3)") {
+    setBgColor("rgba(255, 0, 0, 0)");
   }
+
+  console.log("mist", bgColor);
 
   return (
     <canvas

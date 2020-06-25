@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { getWeather, getHourlyForecast } from "./api";
+import { getWeather } from "./api";
 
 import useTime from "./utils/useTime";
 
@@ -15,14 +15,13 @@ const height = window.innerHeight;
 function App() {
   const [weather, setWeather] = useState(null);
   const [customTime, setCustomTime] = useState(null);
-  const [timezone, setTimezone] = useState(null);
   let { time, hour, minute, midnight } = useTime(customTime, weather);
 
   useEffect(() => {
     async function callGetWeather() {
       const newWeather = await getWeather();
       //Extract lat and lon, call for hourly forecast
-      const { lat, lon } = newWeather.sys;
+      // const { lat, lon } = newWeather.sys;
       setWeather(newWeather);
     }
 
@@ -48,6 +47,7 @@ function App() {
   //Functions to change location
   async function changeCity(city) {
     const newWeather = await getWeather(city);
+    setCustomTime(null);
     setWeather(newWeather);
   }
 

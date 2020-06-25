@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import {
   LocationOptionBox,
@@ -11,6 +11,12 @@ export default function LocationOptions(props) {
   const [newCountry, setNewCountry] = useState(props.weather.sys.country);
   const [newLatitude, setNewLatitude] = useState(props.weather.coord.lat);
   const [newLongitude, setNewLongitude] = useState(props.weather.coord.lon);
+
+  useEffect(() => {
+    setNewLatitude(props.weather.coord.lat);
+    setNewLongitude(props.weather.coord.lon);
+    setNewCity(props.weather.name);
+  }, [props]);
 
   function changeCity(event) {
     setNewCity(event.target.value);

@@ -18,6 +18,9 @@ export default function calculateColor(weather, time, type) {
   if (type === "snow") hue = 175;
   if (type === "ground") hue = 135;
 
+  //Calculate saturation
+  let saturation = 75 - clouds * 0.5;
+
   //Calculate light, should be 40 at dawn and dusk, 80 in day, 10 at night
   let light = 50;
   if (time < sunrise - transition) {
@@ -32,7 +35,7 @@ export default function calculateColor(weather, time, type) {
     //If dawn, and before midday (this is to stop dawn extending longer than the day in high lats)
     // console.log("dawn");
     light = 40 + (40 - ((transition - (time - sunrise)) / transition) * 40);
-  } else if (time < sunset - transition) {
+  } else if (time < sunset - transition || sunset === 0) {
     //If daytime
     // console.log("daytime");
     light = 80;
@@ -49,9 +52,12 @@ export default function calculateColor(weather, time, type) {
     // console.log("night");
     light = 10;
   }
+
   //Factor in clouds
-  light -= clouds * 0.15;
+  light -= clouds * 0.18;
   if (light < 10) light = 10;
+
+  if (type === "sky") saturation -= clouds * 0.2;
 
   //Make hills darker
   if (type === "hills") {
@@ -83,9 +89,6 @@ export default function calculateColor(weather, time, type) {
     if (light < 30) light = 100;
     else light = 0;
   }
-
-  //Calculate saturation
-  let saturation = 75 - clouds * 0.5;
 
   //Make clouds darker at night
   if (type === "cloudsTop") {

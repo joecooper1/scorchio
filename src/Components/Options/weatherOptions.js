@@ -38,6 +38,13 @@ export default function WeatherOptions(props) {
     Clear: [],
     Fog: [],
     Drizzle: [],
+    Smoke: [],
+    Haze: [],
+    Dust: [],
+    Ash: [],
+    Sand: [],
+    Squall: [],
+    Tornado: [],
     None: [],
   };
 

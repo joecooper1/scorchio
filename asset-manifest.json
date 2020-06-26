@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/scorchio/static/css/main.5ecd60fb.chunk.css",
+    "main.js": "/scorchio/static/js/main.49fa11f9.chunk.js",
+    "main.js.map": "/scorchio/static/js/main.49fa11f9.chunk.js.map",
+    "runtime-main.js": "/scorchio/static/js/runtime-main.468027af.js",
+    "runtime-main.js.map": "/scorchio/static/js/runtime-main.468027af.js.map",
+    "static/js/2.f3faf0b7.chunk.js": "/scorchio/static/js/2.f3faf0b7.chunk.js",
+    "static/js/2.f3faf0b7.chunk.js.map": "/scorchio/static/js/2.f3faf0b7.chunk.js.map",
+    "index.html": "/scorchio/index.html",
+    "precache-manifest.caa650b25c408f648ef708cc51a7c771.js": "/scorchio/precache-manifest.caa650b25c408f648ef708cc51a7c771.js",
+    "service-worker.js": "/scorchio/service-worker.js",
+    "static/css/main.5ecd60fb.chunk.css.map": "/scorchio/static/css/main.5ecd60fb.chunk.css.map",
+    "static/js/2.f3faf0b7.chunk.js.LICENSE.txt": "/scorchio/static/js/2.f3faf0b7.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.468027af.js",
+    "static/js/2.f3faf0b7.chunk.js",
+    "static/css/main.5ecd60fb.chunk.css",
+    "static/js/main.49fa11f9.chunk.js"
+  ]
+}

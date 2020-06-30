@@ -27,6 +27,7 @@ export const City = styled.input`
   width: 150px;
   text-align: center;
   background-color: rgba(0, 0, 0, 0);
+  color: inherit;
 `;
 
 export const Image = styled.img``;
@@ -39,7 +40,7 @@ export const CityContainer = styled.label`
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 5px;
   padding: 0;
   margin-top: 20px;
@@ -54,5 +55,5 @@ export const Pencil = styled.p`
   padding-left: 5px;
   padding-right: 5px;
   border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.1);
 `;

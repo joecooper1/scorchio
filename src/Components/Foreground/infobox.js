@@ -6,7 +6,7 @@ import {
   City,
   Time,
   CityContainer,
-  Pencil
+  Pencil,
 } from "../../styles/infobox.styles";
 
 import calculateColor from "../../utils/calulateColor";
@@ -24,6 +24,31 @@ export default function InfoBox(props) {
   //Function to change input value when typing
   function changeValueLocation(event) {
     setLocation(event.target.value);
+  }
+
+  //Function to handle blur input event
+  function blurInput(event) {
+    //If field is empty, revert to previous city
+    if (location === "") {
+      setLocation(weather.name);
+    } else {
+      changeCity(location);
+    }
+  }
+
+  //If hour is not integer
+  if (hour % 1 !== 0) {
+    //Calculate extra mins
+    const extraMins = (hour % 1) * 60;
+    //Floor hour
+    hour = Math.floor(hour);
+    //Add extra mins to mins
+    minute += extraMins;
+    //If minutes is over 60
+    if (minute >= 60) {
+      minute -= 60;
+      hour += 1;
+    }
   }
 
   //Add 0 to numbers if single digits
@@ -44,7 +69,10 @@ export default function InfoBox(props) {
         <City
           value={location}
           onChange={changeValueLocation}
-          onBlur={() => changeCity(location)}
+          onBlur={blurInput}
+          onFocus={() => {
+            setLocation("");
+          }}
         ></City>
         <Pencil>{"\u270E"}</Pencil>
       </CityContainer>

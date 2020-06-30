@@ -7,7 +7,7 @@ export default function calculateColor(weather, time, type) {
 
   //Calculate transition time aka how long dawn and dusk last
   const lat = weather.coord.lat;
-  const transition = (10 + lat / 2) * 60;
+  const transition = (10 + Math.abs(lat) / 2) * 60;
 
   //Set hue
   let hue = 0;
@@ -25,31 +25,32 @@ export default function calculateColor(weather, time, type) {
   let light = 50;
   if (time < sunrise - transition) {
     //If before pre-dawn
-    // console.log("night");
+    console.log("early night");
+    console.log(time, sunrise, transition);
     light = 10;
   } else if (time < sunrise) {
     //If pre-dawn
-    // console.log("pre-dawn");
+    console.log("pre-dawn");
     light = 10 + ((transition - (sunrise - time)) / transition) * 30;
   } else if (time < sunrise + transition && time <= midday) {
     //If dawn, and before midday (this is to stop dawn extending longer than the day in high lats)
-    // console.log("dawn");
+    console.log("dawn");
     light = 40 + (40 - ((transition - (time - sunrise)) / transition) * 40);
   } else if (time < sunset - transition || sunset === 0) {
     //If daytime
-    // console.log("daytime");
+    console.log("daytime");
     light = 80;
   } else if (time < sunset) {
     //If dusk
-    // console.log("dusk");
+    console.log("dusk");
     light = 80 - ((transition - (sunset - time)) / transition) * 40;
   } else if (time < sunset + transition) {
     //If post-dusk
-    // console.log("post-dusk");
+    console.log("post-dusk");
     light = 40 - (30 - ((transition - (time - sunset)) / transition) * 30);
   } else {
     //If night
-    // console.log("night");
+    console.log("late night");
     light = 10;
   }
 
@@ -121,7 +122,7 @@ export default function calculateColor(weather, time, type) {
     saturation -= 20;
   }
 
-  console.log(type, hue, saturation, light);
+  // console.log(type, hue, saturation, light);
 
   return `hsl(${hue}, ${saturation}%, ${light}%)`;
 }

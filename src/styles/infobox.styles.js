@@ -21,14 +21,38 @@ export const Temp = styled.p`
   margin-bottom: 0;
 `;
 
-export const City = styled.p`
+export const City = styled.input`
   font-size: 1em;
-  margin-top: 20px;
-  margin-bottom: 5px;
+  border: 0;
+  width: 150px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0);
 `;
 
 export const Image = styled.img``;
 
 export const Time = styled.p`
   margin-top: 0;
+`;
+
+export const CityContainer = styled.label`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  padding: 0;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  padding-left: 20px;
+`;
+
+export const Pencil = styled.p`
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.2);
 `;

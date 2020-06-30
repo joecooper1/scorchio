@@ -28,15 +28,11 @@ export default function useTime(customTime, weather) {
     //Add hours based on timezone
     hour = now.getHours() + timezone / 3600;
     //Get time data
-    time = Math.round(now.getTime() / 1000) + timezone;
+    time = Math.round(now.getTime() / 1000)
     //If next day
     if (hour >= 24) {
       hour -= 24;
-      time -= 3600 * 24;
     }
-    //If on other side of world, reduce/increase time
-    if (timezone < -21600) time += 21600;
-    if (timezone > 21600) time -= 21600;
   }
 
   //Get minutes

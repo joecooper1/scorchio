@@ -84,6 +84,7 @@ function App() {
             height={height}
             hour={hour}
             minute={minute}
+            changeCity={changeCity}
           />
           <OptionsScreen
             weather={weather}

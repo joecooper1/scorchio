@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/scorchio/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/scorchio/static/js/main.d2c30b6b.chunk.js",
-    "main.js.map": "/scorchio/static/js/main.d2c30b6b.chunk.js.map",
+    "main.js": "/scorchio/static/js/main.f02d24ac.chunk.js",
+    "main.js.map": "/scorchio/static/js/main.f02d24ac.chunk.js.map",
     "runtime-main.js": "/scorchio/static/js/runtime-main.468027af.js",
     "runtime-main.js.map": "/scorchio/static/js/runtime-main.468027af.js.map",
     "static/js/2.f3faf0b7.chunk.js": "/scorchio/static/js/2.f3faf0b7.chunk.js",
     "static/js/2.f3faf0b7.chunk.js.map": "/scorchio/static/js/2.f3faf0b7.chunk.js.map",
     "index.html": "/scorchio/index.html",
-    "precache-manifest.4cd68c2bd27528bca34b72f2dcf68184.js": "/scorchio/precache-manifest.4cd68c2bd27528bca34b72f2dcf68184.js",
+    "precache-manifest.974980c6dc7a338a18443aaa2742cb21.js": "/scorchio/precache-manifest.974980c6dc7a338a18443aaa2742cb21.js",
     "service-worker.js": "/scorchio/service-worker.js",
     "static/css/main.5ecd60fb.chunk.css.map": "/scorchio/static/css/main.5ecd60fb.chunk.css.map",
     "static/js/2.f3faf0b7.chunk.js.LICENSE.txt": "/scorchio/static/js/2.f3faf0b7.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.468027af.js",
     "static/js/2.f3faf0b7.chunk.js",
     "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.d2c30b6b.chunk.js"
+    "static/js/main.f02d24ac.chunk.js"
   ]
 }

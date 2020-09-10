@@ -5,6 +5,7 @@ import { OptionsBox } from "../../styles/options.styles";
 import WeatherOptions from "./weatherOptions";
 import LocationOptions from "./locationOptions";
 import TimeOptions from "./timeOptions";
+import JsonConverter from "../JSONShit/jsonconverter";
 
 export default function OptionsScreen(props) {
   //Extract variables
@@ -39,6 +40,7 @@ export default function OptionsScreen(props) {
         changeCustomTime={changeCustomTime}
       ></TimeOptions> */}
       <WeatherOptions weather={weather} changeWeather={changeWeather} />
+      <JsonConverter />
     </OptionsBox>
   );
 }

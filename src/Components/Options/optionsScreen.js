@@ -24,7 +24,7 @@ export default function OptionsScreen(props) {
 
   return (
     <OptionsBox width={width} height={height}>
-      <h1>Scorchio</h1>
+      <h1 style={{ color: "pink" }}>Scorchio</h1>
       <p>A prototype design for a 'live' weather app.</p>
       <h3>Options</h3>
       <p>Input your location, or change the weather manually.</p>

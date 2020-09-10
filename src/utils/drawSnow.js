@@ -58,8 +58,12 @@ export default function drawSnow(ctx, weather, time, height, width) {
         flake.coords.y = Math.random() * -30;
         flake.size = Math.random() * 3 + 1;
       }
-      if (flake.coords.x > width) {
-        flake.coords.x = Math.random() * -10;
+      if (flake.coords.x > width + 5) {
+        flake.coords.x = -5;
+        flake.size = Math.random() * 3 + 1;
+      }
+      if (flake.coords.x < -5) {
+        flake.coords.x = width + 5;
         flake.size = Math.random() * 3 + 1;
       }
       //Draw each flake

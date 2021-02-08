@@ -40,7 +40,6 @@ export default function OptionsScreen(props) {
         changeCustomTime={changeCustomTime}
       ></TimeOptions> */}
       <WeatherOptions weather={weather} changeWeather={changeWeather} />
-      <JsonConverter />
     </OptionsBox>
   );
 }
